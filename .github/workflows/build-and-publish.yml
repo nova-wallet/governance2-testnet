@@ -29,6 +29,12 @@ jobs:
       - name: Rename artifacts
         run: mv ./target/release/governance2 ./target/release/governance2-${{ env.tag }}
 
+      - name: ➡️ Upload build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: bin
+          path: ./target/release/governance2-${{ env.tag }}
+
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
