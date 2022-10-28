@@ -139,11 +139,11 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
 	//   `spec_version`, and `authoring_version` are the same between Wasm and native.
 	// This value is set to 100 to notify Polkadot-JS App (https://polkadot.js.org/apps) to use
 	//   the compatible custom types.
-	spec_version: 102,
+	spec_version: 103,
 	impl_version: 1,
 	apis: RUNTIME_API_VERSIONS,
-	transaction_version: 2,
-	state_version: 2,
+	transaction_version: 3,
+	state_version: 3,
 };
 
 /// This determines the average expected block time that we are targeting.
@@ -984,6 +984,13 @@ impl auctions::Config for Runtime {
 	type WeightInfo = weights::runtime_common_auctions::WeightInfo<Runtime>;
 }
 
+impl pallet_utility::Config for Runtime {
+	type RuntimeEvent = RuntimeEvent;
+	type RuntimeCall = RuntimeCall;
+	type PalletsOrigin = OriginCaller;
+	type WeightInfo = weights::pallet_utility::WeightInfo<Runtime>;
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub enum Runtime where
@@ -1031,6 +1038,7 @@ construct_runtime!(
 		FellowshipCollective: pallet_ranked_collective::<Instance1>,
 		FellowshipReferenda: pallet_referenda::<Instance2>,
 
+		Utility: pallet_utility::{Pallet, Call, Event} = 24,
 		Identity: pallet_identity::{Pallet, Call, Storage, Event<T>} = 25,
 
 		// Parachains pallets. Start indices at 50 to leave room.
