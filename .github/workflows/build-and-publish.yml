@@ -29,6 +29,7 @@ jobs:
 
       - name: Build release
         run: cargo build --release
+        
 
       - name: Rename artifacts
         run: mv ./target/release/governance2 ./target/release/governance2-${{ github.event.inputs.tag }}
