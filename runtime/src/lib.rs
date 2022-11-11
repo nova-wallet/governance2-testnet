@@ -708,7 +708,7 @@ parameter_types! {
 	pub VotingPeriod: BlockNumber = prod_or_fast!(28 * DAYS, 1 * MINUTES, "DOT_VOTING_PERIOD");
 	pub FastTrackVotingPeriod: BlockNumber = prod_or_fast!(3 * HOURS, 1 * MINUTES, "DOT_FAST_TRACK_VOTING_PERIOD");
 	pub const MinimumDeposit: Balance = 100 * DOLLARS;
-	pub EnactmentPeriod: BlockNumber = prod_or_fast!(28 * DAYS, 1, "DOT_ENACTMENT_PERIOD");
+	pub EnactmentPeriod: BlockNumber = prod_or_fast!(1 * MINUTES, 1, "DOT_ENACTMENT_PERIOD");
 	pub CooloffPeriod: BlockNumber = prod_or_fast!(7 * DAYS, 1, "DOT_COOLOFF_PERIOD");
 	pub const InstantAllowed: bool = true;
 	pub const MaxVotes: u32 = 100;
